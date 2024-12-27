@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Redirect</title>
+    <script>
+        // Function to detect iOS, iPadOS or Android
+        function detectDevice() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Check for iOS/iPadOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Redirect to the iOS App Store link
+                window.location.href = 'https://apps.apple.com/au/app/opark/id6449750852';
+            }
+            // Check for Android
+            else if (/android/i.test(userAgent)) {
+                // Redirect to the Google Play Store link
+                window.location.href = 'https://play.google.com/store/apps/details?id=au.com.vpark.opark&hl=en_AU&pli=1';
+            } else {
+                // Display both links if the device is neither iOS nor Android
+                document.getElementById('links').style.display = 'block';
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = detectDevice;
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #links {
+            display: none;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected automatically, please click one of the links below:</p>
+    <div id="links">
+        <p><a href="https://apps.apple.com/au/app/opark/id6449750852" target="_blank">Download on the App Store (iOS/iPadOS)</a></p>
+        <p><a href="https://play.google.com/store/apps/details?id=au.com.vpark.opark&hl=en_AU&pli=1" target="_blank">Download on Google Play (Android)</a></p>
+    </div>
+</body>
+</html>
